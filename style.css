@@ -44,29 +44,6 @@ h1, h2 {
     margin-bottom: 24px;
 }
 
-/* Аккуратная незаметная кнопка-ссылка */
-.btn-secondary {
-    display: block;
-    width: auto;
-    margin: 15px auto 0 auto; /* Центрирует кнопку и делает отступ сверху */
-    background: transparent;
-    border: none;
-    color: #94a3b8; /* Спокойный серый цвет */
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: underline; /* Подчеркивание как у ссылки */
-    cursor: pointer;
-    transition: color 0.2s ease;
-    padding: 5px 10px;
-}
-
-/* Эффект при наведении */
-.btn-secondary:hover {
-    background: transparent;
-    color: #64748b; /* Чуть темнее при наведении */
-}
-
-
 /* Экраны */
 .screen {
     display: none;
