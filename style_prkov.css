@@ -1,0 +1,335 @@
+/* Общие стили */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #042027;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden; /* Защита от горизонтальной прокрутки из-за уведомлений */
+}
+
+
+.app-container {
+    background-color: #5f5e5e;
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Линия этапов */
+.progress-container {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    background-color: #2f48d6;
+    width: 0%;
+    transition: width 0.4s ease;
+    z-index: 1;
+}
+
+/* Фоновая серая линия */
+.progress-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    background-color: #e0e0e0;
+    width: 100%;
+    z-index: 0;
+}
+
+.steps-wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.step {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #041050;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.4s ease;
+}
+
+.step.active {
+    background-color: #2f48d6;
+}
+
+/* Экраны */
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: #ededed;
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+}
+
+/* Поля ввода */
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #fffcfc;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #2e44a6;
+}
+
+.time-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* Кнопки */
+.btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #3361d7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background-color: #2154d5;
+}
+
+.btn-group {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+/* Стилизация текстовой ссылки */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+/* Эффект при наведении */
+a:hover {
+    color: var(--primary-hover);
+    text-shadow: 0 0 1px rgba(2, 132, 199, 0.2);
+}
+
+/* Чек */
+.receipt {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #3361d7;
+    margin-bottom: 20px;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.receipt-row.total {
+    border-top: 1px dashed #ccc;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Прямоугольник-Карта */
+.credit-card {
+    background: linear-gradient(135deg, #d6d3e5, #3e3d44);
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card-chip {
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(135deg, #e0a96d, #966b38);
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.card-label {
+    color: #2a2727 !important;
+    font-size: 11px !important;
+    text-transform: uppercase;
+    white-space: nowrap; /* Защита от переноса текста заголовков на новую строку */
+}
+
+/* Компактные поля внутри карты */
+.card-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 10px;
+    font-size: 14px;
+    width: 100%; /* Занимает всю ширину своей колонки */
+}
+
+.card-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.card-input:focus {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Строка с двумя маленькими полями */
+.card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Делим карту строго пополам */
+    gap: 12px; /* Чуть уменьшили расстояние между полями */
+}
+
+/* Успешный экран */
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #3361d7;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 0 auto 20px auto;
+}
+
+#screen-4 p {
+    text-align: center;
+    color: #fbf1f1;
+    margin-bottom: 20px;
+}
+
+/* Кастомные уведомления в углу */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.custom-alert {
+    background-color: #f44336;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 250px;
+    max-width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.custom-alert.hide {
+    animation: slideOut 0.4s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+}

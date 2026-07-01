@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата парковки</title>
+    <link rel="stylesheet" href="style_prkov.css">
+</head>
+<body>
+
+    <!-- Контейнер для всплывающих уведомлений -->
+    <div id="notification-container"></div>
+
+    <div class="app-container">
+        <!-- Линия этапов -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-line"></div>
+            <div class="steps-wrapper">
+                <div class="step active" data-step="1">1</div>
+                <div class="step" data-step="2">2</div>
+                <div class="step" data-step="3">3</div>
+                <div class="step" data-step="4">4</div>
+            </div>
+        </div>
+
+        <!-- ЭКРАН 1: Ввод данных парковки -->
+        <div class="screen active" id="screen-1">
+            <h2>Данные парковки</h2>
+            <div class="input-group">
+                <label for="parking-number">Номер парковки</label>
+                <input type="number" id="parking-number" placeholder="Например, 123" min="1" required>
+            </div>
+            <div class="time-inputs">
+                <div class="input-group">
+                    <label for="park-hours">Часы (макс. 10)</label>
+                    <input type="number" id="park-hours" placeholder="0" min="0" max="10">
+                </div>
+                <div class="input-group">
+                    <label for="park-minutes">Минуты</label>
+                    <input type="number" id="park-minutes" placeholder="0" min="0" max="59">
+                </div>
+            </div>
+            <button class="btn" id="to-screen-2">Далее</button>
+            <div style="text-align: center;">
+            <a href="index.html">Вернуться на покупку билетов</a>
+            </div>
+        </div>
+
+        <!-- ЭКРАН 2: Чек -->
+        <div class="screen" id="screen-2">
+            <h2>Итоговый чек</h2>
+            <div class="receipt">
+                <div class="receipt-row"><span>Номер парковки:</span> <strong id="receipt-parking">-</strong></div>
+                <div class="receipt-row"><span>Время стоянки:</span> <strong id="receipt-time">-</strong></div>
+                <div class="receipt-row total"><span>К оплате:</span> <strong id="receipt-total">0 руб.</strong></div>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-secondary back-btn">Назад</button>
+                <button class="btn" id="to-screen-3">Оплатить</button>
+            </div>
+        </div>
+
+        <!-- ЭКРАН 3: Форма оплаты (Карта) -->
+        <div class="screen" id="screen-3">
+            <h2>Оплата картой</h2>
+            <div class="credit-card">
+                <div class="card-chip"></div>
+                <div class="input-group">
+                    <label class="card-label">Номер карты</label>
+                    <input type="text" id="card-number" class="card-input" placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                <div class="card-row">
+                    <div class="input-group">
+                        <label class="card-label">Срок действия</label>
+                        <input type="text" id="card-expiry" class="card-input" placeholder="ММ/ГГ" maxlength="5">
+                    </div>
+                    <div class="input-group">
+                        <label class="card-label">CVC/CVV</label>
+                        <input type="password" id="card-cvv" class="card-input" placeholder="000" maxlength="3">
+                    </div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-secondary back-btn">Назад</button>
+                <button class="btn" id="to-screen-4">Подтвердить оплату</button>
+            </div>
+        </div>
+
+        <!-- ЭКРАН 4: Успех -->
+        <div class="screen" id="screen-4">
+            <div class="success-icon">✓</div>
+            <h2>Оплата успешна!</h2>
+            <p>Спасибо, парковка успешно оплачена.</p>
+            <button class="btn" id="reset-btn">Вернуться в начало</button>
+            <div style="text-align: center;">
+            <a href="index.html">Вернуться на покупку билетов</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script_prkov.js"></script>
+</body>
+</html>

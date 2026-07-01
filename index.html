@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аквапарк — Покупка билетов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Контейнер для всплывающих уведомлений -->
+    <div id="notification-container"></div>
+
+    <div class="container">
+        
+        <!-- ЭКРАН 1: БРОНИРОВАНИЕ -->
+        <div id="screen-booking" class="screen active">
+            <h1>Аквапарк</h1>
+            
+            <div class="form-group">
+                <label for="adults">Взрослые (1500 руб/час)</label>
+                <input type="number" id="adults" min="0" value="1" placeholder="0">
+            </div>
+
+            <div class="form-group">
+                <label for="children">Дети до 10 лет (1200 руб/час)</label>
+                <input type="number" id="children" min="0" value="0" placeholder="0">
+            </div>
+
+            <div class="form-group">
+                <label for="hours">Количество часов</label>
+                <select id="hours">
+                    <option value="1">1 час</option>
+                    <option value="2">2 часа</option>
+                    <option value="3">3 часа</option>
+                    <option value="4">4 часа</option>
+                    <option value="8">Весь день (8 часов)</option>
+                </select>
+            </div>
+
+            <div class="receipt">
+                <div class="receipt-row">
+                    <span>Взрослые:</span>
+                    <span id="receipt-adults">1 × 1500 руб.</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Дети:</span>
+                    <span id="receipt-children">0 × 1200 руб.</span>
+                </div>
+                <div class="receipt-row">
+                    <span>Время:</span>
+                    <span id="receipt-hours">1 ч.</span>
+                </div>
+                <div class="receipt-row receipt-total">
+                    <span>Итого:</span>
+                    <span id="receipt-total-price">1500 руб.</span>
+                </div>
+            </div>
+
+            <button class="btn" id="btn-go-to-pay">Перейти к оплате</button>
+            <div style="text-align: center;">
+            <a href="prkov.html">Оплата парковки</a>
+            </div>
+        </div>
+
+        <!-- ЭКРАН 2: ОПЛАТА КАРТОЙ -->
+        <div id="screen-payment" class="screen">
+            <h2>Оплата картой</h2>
+            
+            <!-- Таймер сессии -->
+            <div class="timer-box">
+                Время на оплату: <span id="payment-timer">05:00</span>
+            </div>
+
+            <div class="card-wrapper">
+                <div class="form-group">
+                    <div class="card-label">Номер карты</div>
+                    <input type="text" id="card-number" class="card-input" placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                
+                <div class="card-row">
+                    <div style="flex: 2;">
+                        <div class="card-label">Срок действия</div>
+                        <div style="display: flex; gap: 5px; align-items: center;">
+                            <input type="text" id="card-month" class="card-input" placeholder="ММ" maxlength="2">
+                            <span style="color: #94a3b8">/</span>
+                            <input type="text" id="card-year" class="card-input" placeholder="ГГ" maxlength="2">
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <div class="card-label">Код (CVC)</div>
+                        <input type="password" id="card-cvc" class="card-input" placeholder="***" maxlength="3">
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 15px; font-weight: bold;">
+                К оплате: <span id="pay-total-price" style="color: var(--primary);">0</span> руб.
+            </div>
+
+            <button class="btn" id="btn-pay">Оплатить</button>
+
+            <button class="btn-secondary" id="btn-back-to-booking">Вернуться назад</button>
+
+        </div>
+
+        <!-- ЭКРАН 3: УСПЕХ -->
+        <div id="screen-success" class="screen">
+            <h2 style="color: var(--success);">🎉 Билет куплен!</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Ваши электронные квитанции:</p>
+            
+            <div class="tickets-container" id="final-tickets">
+                <!-- Сюда вставляются квитанции из JS -->
+            </div>
+
+            <button class="btn" id="btn-restart" style="background: #64748b;">Вернуться в начало</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
