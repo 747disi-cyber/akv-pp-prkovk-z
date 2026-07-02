@@ -102,7 +102,7 @@ document.getElementById('to-screen-2').addEventListener('click', () => {
         totalHours += 1;
     }
     
-    const pricePerHour = 300;
+    const pricePerHour = 225;
     const totalPrice = totalHours * pricePerHour;
 
     document.getElementById('receipt-parking').textContent = `№ ${parkingNum}`;
