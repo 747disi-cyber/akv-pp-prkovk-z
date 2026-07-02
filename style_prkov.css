@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #042027;
+    background-color: #03161b;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@ body {
 
 
 .app-container {
-    background-color: #5f5e5e;
+    background-color: #313131;
     width: 100%;
     max-width: 400px;
     padding: 30px;
